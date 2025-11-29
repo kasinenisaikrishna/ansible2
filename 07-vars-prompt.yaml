@@ -3,6 +3,7 @@
   vars_prompt:
   - name: course
     prompt: please enter the course name
+    private: false #value entered in the prompt is visible, by default prompt means confidential
   - name: trainer
     prompt: please enter the trainer name
   - name: duration
