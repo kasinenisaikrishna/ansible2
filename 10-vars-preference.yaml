@@ -4,8 +4,8 @@
     course: "devops with aws from play level"
     trainer: "sai"
     duration: "110hrs"
-  vars_files:
-  - vars.yaml
+  # vars_files:
+  # - vars.yaml
   vars_prompt:
   - name: course
     prompt: please enter the course name
