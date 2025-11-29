@@ -3,7 +3,7 @@
   vars:
     course: "devops with aws"
     trainer: "sai"
-    duration: "120hrs"
+    duration: "110hrs"
   tasks:
   - name: print the information
     ansible.builtin.debug:
