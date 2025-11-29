@@ -12,9 +12,9 @@
     private: false
   tasks:
   - name: print the course information
-    vars:
-      course: "devops with aws from task level"
-      trainer: "sai"
-      duration: "110hrs"
+    # vars:
+    #   course: "devops with aws from task level"
+    #   trainer: "sai"
+    #   duration: "110hrs"
     ansible.builtin.debug:
         msg: "Hi, I am learning {{course}}"
