@@ -10,7 +10,7 @@
     - backend
     - frontend
   tasks:
-  - name: Install boto3 and botocore
+  - name: Install boto3 and botocore #to install below 2 dependencies as ansible is developed on top of python and if ansible wants to connect to aws using sdk we need boto3 and botocore to be installed in python and also 3.9 is the version of ansible this version may change to get the versions we need to use ansible --version 
     ansible.builtin.pip3.9:
     name:
     - boto3
@@ -24,3 +24,7 @@
       image_id: "{{ ami_id }}"
     loop: "{{ instances }}"
     register: ec2_instances #we get entire output as we need this output to create r53 records and private ip also we will get fro here
+
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "{{ ec2_instances }}"
