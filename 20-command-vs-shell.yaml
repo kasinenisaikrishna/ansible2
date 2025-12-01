@@ -1,0 +1,10 @@
+- name: command vs shell
+  hosts: local
+  connection: local
+  tasks:
+  - name: execute the command in shell
+    ansible.builtin.shell: ls -ltr > /tmp/output.txt #this will not work in the command module because command module cannot able to access pipes or redirectors. shell module log in to the server and executes command inside
+
+  - name: check the process
+    ansible.builtin.shell: ps -ef | grep ssh
+    register: output    
