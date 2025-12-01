@@ -9,6 +9,11 @@
     - mysql
     - backend
     - frontend
+  - name: Install boto3 and botocore
+    ansible.builtin.pip3.9:
+    name:
+    - boto3
+    - botocore
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
