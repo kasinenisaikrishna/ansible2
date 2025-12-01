@@ -9,6 +9,7 @@
     - mysql
     - backend
     - frontend
+    zone: dawsconnect.org
   tasks:
   - name: Install boto3 and botocore #to install below 2 dependencies as ansible is developed on top of python and if ansible wants to connect to aws using sdk we need boto3 and botocore to be installed in python and also 3.9 is the version of ansible this version may change to get the versions we need to use ansible --version 
     ansible.builtin.pip3.9:
@@ -28,3 +29,15 @@
   - name: print the output
     ansible.builtin.debug:
       msg: "{{ ec2_instances }}"
+
+  - name: create r53 records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}" #mysql.dawsconnect.org 1st item is for loop 2nd item is key for mysql value 
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address }}" #item is for loop
+      wait: true
+      overwrite: true
+    loop:"{{ ec2_instances.results }}"
