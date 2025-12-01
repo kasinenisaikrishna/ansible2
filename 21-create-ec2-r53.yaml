@@ -11,11 +11,12 @@
     - frontend
     zone: dawsconnect.org
   tasks:
-  - name: Install boto3 and botocore #to install below 2 dependencies as ansible is developed on top of python and if ansible wants to connect to aws using sdk we need boto3 and botocore to be installed in python and also 3.9 is the version of ansible this version may change to get the versions we need to use ansible --version 
-    ansible.builtin.pip3.9:
-    name:
-    - boto3
-    - botocore
+  - name: Ansible to install boto3 and botocore #to install below 2 dependencies as ansible is developed on top of python and if ansible wants to connect to aws using sdk we need boto3 and botocore to be installed in python. 
+    ansible.builtin.pip:
+      name:
+      - boto3
+      - botocore
+      executable: pip3.9 #3.9 is the version of ansible-server this version may change to know the version of ansible we need to use ansible --version
   - name: create ec2 instance
     amazon.aws.ec2_instance:
       name: "{{ item }}"
